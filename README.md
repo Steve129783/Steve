@@ -53,12 +53,14 @@ Code name: 3_c_vis.py
 
 Output:
 1. The encoder layers
-![image](https://github.com/user-attachments/assets/36eeeae2-7d23-4f3a-b2e3-5ad774514432)
+![image](https://github.com/user-attachments/assets/2973975c-fb34-4935-8877-cb593daca143)
+
 Figure layer 0
 
 From this figure, some channels are high sensitivity to the defect pixels.
 
-![image](https://github.com/user-attachments/assets/725a93a9-aa8f-499e-9d27-2bbf3d0a1b78)
+![image](https://github.com/user-attachments/assets/ee1b1f76-281d-4de0-b4c4-bda6ca2ef20c)
+
 Figure layer 1
 ____________________________________________________________________________________________________________
 Code name: c4_CVAE_model.py
