@@ -66,9 +66,9 @@ ________________________________________________________________________________
 ## Code name: c4_CVAE_model.py
 1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
-3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)
-                Conv2d 1: (64, 25, 25) - (128, 12, 12)
-                Conv2d 2: (128, 12, 12) - (256, 6, 6)
+3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)\
+                Conv2d 1: (64, 25, 25) - (128, 12, 12)\
+                Conv2d 2: (128, 12, 12) - (256, 6, 6)\
    Then flatten 256x6x6 = 9216 to 128 latent dimensions.
 4. The classification head (self.classifier) takes μ as input and outputs three logits; these logits are passed
    through a softmax to produce the probabilities for groups 0, 1, and 2, and the index with the highest
