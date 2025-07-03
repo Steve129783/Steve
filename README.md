@@ -68,7 +68,8 @@ ________________________________________________________________________________
    layer and projecting it to 2D with PCA.
 
 Output：
-1. ![image](https://github.com/user-attachments/assets/bfb83005-c682-409c-80ed-00b3ea60299d)
+1. ![image](https://github.com/user-attachments/assets/97be60dc-b880-45b1-8125-b78ecc43d7a3)
+
 This figure shows that the expressive power of the latent space of CNN is weaker than the CVAE, and the classification
 accuracy is also weaker than CVAE.
 
