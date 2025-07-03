@@ -37,8 +37,8 @@ ________________________________________________________________________________
    sets n_classes accordingly (in your case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
    ensure a reliable estimate of generalization.
-4. CNN use two layers, Conv Block 1:(1, 50, 50) - (16, 25, 25)，
-                       Conv Block 2:(16, 25, 25) - (32, 12, 12),
+4. CNN use two layers, Conv Block 1:(1, 50, 50) - (16, 25, 25)\
+                       Conv Block 2:(16, 25, 25) - (32, 12, 12)\
    then flatten the 32x12x12 = 4608 to 128 dimensions (hidden fully-connected layer similar to latent space of
    VAE but does not have the ability to generate and interpolate) then classify the group of patches.
 5. After training with early stopping on the validation set, we evaluate final performance on the held-out test
