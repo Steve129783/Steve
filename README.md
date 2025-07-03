@@ -45,12 +45,15 @@ Output:
 1. Test Accuracy: 0.9654
 2. best_model.pth
 ____________________________________________________________________________________________________________
-Code name: .py
-
+Code name: 3_c_vis.py
+1. visualize the channels in 2 layers
 
 Output:
-
-
+1. The encoder layers
+![image](https://github.com/user-attachments/assets/36eeeae2-7d23-4f3a-b2e3-5ad774514432)
+Figure layer 0
+![image](https://github.com/user-attachments/assets/725a93a9-aa8f-499e-9d27-2bbf3d0a1b78)
+Figure layer 1
 
 
 
