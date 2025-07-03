@@ -32,7 +32,7 @@ Output:
 
 
 ____________________________________________________________________________________________________________
-## Code name: 2_CNN_model.py
+## Code name: c2_CNN_model.py
 1. The training script reads group_ids from the data_cache.pt file, counts the unique values, and automatically
    sets n_classes accordingly (in your case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
@@ -63,7 +63,17 @@ From this figure, some channels are high sensitivity to the defect pixels.
 
 Figure layer 1
 ____________________________________________________________________________________________________________
-## Code name: c4_CVAE_model.py
+## Code name: 4_c_hidden_vis，py
+1. We visualize samples in the CNN hidden feature space by extracting the 128-dimensional vector from the penultimate
+   layer and projecting it to 2D with PCA.
+
+Output：
+1. ![image](https://github.com/user-attachments/assets/bfb83005-c682-409c-80ed-00b3ea60299d)
+This figure shows that the expressive power of the latent space of CNN is weaker than the CVAE, and the classification
+accuracy is also weaker than CVAE.
+
+____________________________________________________________________________________________________________
+## Code name: v5_CVAE_model.py
 1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
 3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)，
@@ -85,7 +95,7 @@ model has better classification performance than CNN.
 
 2. save best weight best_model.pth
 ____________________________________________________________________________________________________________
-## Code name: 5_latent_cluster.py
+## Code name: 6_v_latent_cluster.py
 1. input data_cache.py and import the best_model.pth to extract only μ (ignore log variance logσ^2).
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
