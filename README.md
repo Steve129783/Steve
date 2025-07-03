@@ -8,6 +8,9 @@ These datasets includs 50x50 patches from components with different print energy
 Current objectives:
 1. Check CNN and CVAE latent space 
 2. Optimise the hyperparameters
+
+Tasks
+1. Use high defect sensitivity channels to classify the patches.
 ____________________________________________________________________________________________________________
 Code name: 0_image_save.py
 1. Read .tif files and separate them to different folders
@@ -30,12 +33,12 @@ Output:
 
 ____________________________________________________________________________________________________________
 Code name: 2_CNN_model.py
-1. The training script reads group_ids from the cached .pt file, counts the unique values, and automatically
+1. The training script reads group_ids from the data_cache.pt file, counts the unique values, and automatically
    sets n_classes accordingly (in your case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
    ensure a reliable estimate of generalization.
-4. CNN use two layers, Conv Block 1:(1,50,50)-(16,25,25)，
-                       Conv Block 2:(16,25,25)-(32,12,12),
+4. CNN use two layers, Conv Block 1:(1, 50, 50) - (16, 25, 25)，
+                       Conv Block 2:(16, 25, 25) - (32, 12, 12),
    then flatten the 32x12x12 = 4608 to 128 dimensions (hidden fully-connected layer similar to latent space of
    VAE but does not have the ability to generate and interpolate) then classify the group of patches.
 5. After training with early stopping on the validation set, we evaluate final performance on the held-out test
@@ -52,17 +55,32 @@ Output:
 1. The encoder layers
 ![image](https://github.com/user-attachments/assets/36eeeae2-7d23-4f3a-b2e3-5ad774514432)
 Figure layer 0
+
+From this figure, some channels are high sensitivity to the defect pixels.
+
 ![image](https://github.com/user-attachments/assets/725a93a9-aa8f-499e-9d27-2bbf3d0a1b78)
 Figure layer 1
+____________________________________________________________________________________________________________
+Code name: c4_CVAE_model.py
+1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
+2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
+3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)
+                Conv2d 1: (64, 25, 25) - (128, 12, 12)
+                Conv2d 2: (128, 12, 12) - (256, 6, 6)
+   Then flatten 256x6x6 = 9216 to 128 latent dimensions.
+4. The classification head (self.classifier) takes μ as input and outputs three logits; these logits are passed
+   through a softmax to produce the probabilities for groups 0, 1, and 2, and the index with the highest
+   probability is chosen as the final predicted class.
 
+Output: 
+1. Epoch 21/50 | Train Acc=0.9954 | Val Acc=0.9802 | Val MSE=0.009520 | Val KL=2.2877
+    Top 5 KL dims (dim, kl): [(55, 0.9330708384513855), (5, 0.7913203835487366), (6, 0.009043470025062561), (118, 0.008738156408071518), 
+(93, 0.008143114857375622)]
+Early stopping triggered at epoch 21.
+Test Acc=0.9821 | Test MSE=0.009161
 
-
-
-
-
-
-
-
+2. save best weight best_model.pth
+____________________________________________________________________________________________________________
 
 
 
