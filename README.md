@@ -80,14 +80,40 @@ Output:
 (93, 0.008143114857375622)]
 Early stopping triggered at epoch 21.
 Test Acc=0.9821 | Test MSE=0.009161
+
+model has better classification performance than CNN.
+
 2. save best weight best_model.pth
 ____________________________________________________________________________________________________________
 ## Code name: 5_latent_cluster.py
 1. input data_cache.py and import the best_model.pth to extract only μ (ignore log variance logσ^2).
-2. 
+2. Use PCA to reduce the dimension of latent space, then visualize the map.
+
 Output:
 1. ![image](https://github.com/user-attachments/assets/99d13631-205c-42cc-bd79-62061bcf6e0e)
-   ![image](https://github.com/user-attachments/assets/2c76df61-0400-4ac9-8a5a-4079e032d6d8)
+Figure 1
+
+From this image, the model clustering function is influenced by the 'edge' and 'corner' features which are caused 
+by the padding, if we only cluster patches depending on the featuers from defects, this problem can be avoided.
+
+3. ![image](https://github.com/user-attachments/assets/2c76df61-0400-4ac9-8a5a-4079e032d6d8)
+Figure 2
+____________________________________________________________________________________________________________
+## Code name: Additional functions (not been implemented)
+1. Add more datasets
+2. Limit the model extracts the feature map only depends on the defect features.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
