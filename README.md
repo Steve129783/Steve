@@ -1,15 +1,15 @@
-Supervised Learning models: 1. CNN, 2. CVAE
+### Supervised Learning models: 1. CNN, 2. CVAE
 
-What we input:
+### What we input:
 1. Three datasets, 0: "correct", 1: "high", 2: "low"
 These datasets includs 50x50 patches from components with different print energy.
 ![image](https://github.com/user-attachments/assets/25ca3d79-7ec1-415a-9f78-1aaa46326e8f)
 
-Current objectives:
+### Current objectives:
 1. Check CNN and CVAE latent space 
 2. Optimise the hyperparameters
 
-Tasks
+### Tasks
 1. Use high defect sensitivity channels to classify the patches.
 ____________________________________________________________________________________________________________
 ## Code name: 0_image_save.py
