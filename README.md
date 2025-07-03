@@ -107,7 +107,7 @@ From this image, the model clustering function is influenced by the 'edge' and '
 by the padding, if we only cluster patches depending on the featuers from defects, this problem can be avoided.
 
 3. ![image](https://github.com/user-attachments/assets/2c76df61-0400-4ac9-8a5a-4079e032d6d8)
-Figure 2
+Figure 2 Zoom in on the middle section
 ____________________________________________________________________________________________________________
 ## Code name: Additional functions (not been implemented)
 1. Add more datasets
