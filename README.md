@@ -12,7 +12,7 @@ Current objectives:
 Tasks
 1. Use high defect sensitivity channels to classify the patches.
 ____________________________________________________________________________________________________________
-Code name: 0_image_save.py
+## Code name: 0_image_save.py
 1. Read .tif files and separate them to different folders
 2. output padded full images (200x200) and patches (50x50).
 
@@ -22,7 +22,7 @@ Output:
 2. ![000_x50_y50](https://github.com/user-attachments/assets/faa78a56-f36e-4a4d-8ba9-bdbf1f29ee84)
 
 ____________________________________________________________________________________________________________
-Code name: 1_Pack.py
+## Code name: 1_Pack.py
 1. Read patches from folders and label them by their folders’ name
 2. Pack them together to a .pt file 
 
@@ -32,7 +32,7 @@ Output:
 
 
 ____________________________________________________________________________________________________________
-Code name: 2_CNN_model.py
+## Code name: 2_CNN_model.py
 1. The training script reads group_ids from the data_cache.pt file, counts the unique values, and automatically
    sets n_classes accordingly (in your case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
@@ -48,7 +48,7 @@ Output:
 1. Test Accuracy: 0.9654
 2. best_model.pth
 ____________________________________________________________________________________________________________
-Code name: 3_c_vis.py
+## Code name: 3_c_vis.py
 1. visualize the channels in 2 layers
 
 Output:
@@ -63,7 +63,7 @@ From this figure, some channels are high sensitivity to the defect pixels.
 
 Figure layer 1
 ____________________________________________________________________________________________________________
-Code name: c4_CVAE_model.py
+## Code name: c4_CVAE_model.py
 1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
 3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)
