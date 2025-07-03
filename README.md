@@ -13,5 +13,38 @@ Code name: 0_image_save.py
 Output:
 ![image](https://github.com/user-attachments/assets/1e226c26-c500-4e14-b5e3-b42d42c8a1a1)
 
+Code name: 1_CNN_model.py
+1. (optional) separate the images in files to 
+2. split them to 50x50 patches and separate them to 3 files.
+
+Output:
+![image](https://github.com/user-attachments/assets/1e226c26-c500-4e14-b5e3-b42d42c8a1a1)
+
+Code name: 2_c_vis.py
+1. Show the channels in CNN encoder
+
+Output:
+![image](https://github.com/user-attachments/assets/77d39d14-a808-4d31-aa12-b115ae0360c9)
+![image](https://github.com/user-attachments/assets/7a55f4d4-cc47-4269-8d17-a34f9ee4194e)
+![image](https://github.com/user-attachments/assets/0cfbdcce-4ae5-4e99-88ea-d11889b1e53f)
+
+Code name: 3_Pack.py
+1. Read images and label by the group their belong to.
+2. Pack them together for the training
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
