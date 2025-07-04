@@ -1,5 +1,5 @@
 ### Supervised Learning models: 
-1. CNN, 2. VAE
+1. CNN, 2. VAE\
 This training pipeline ensures strict reproducibility of the model training process on identical hardware and
 code versions by globally fixing random seeds (Python, NumPy, PyTorch, CUDA), disabling nondeterministic
 algorithms (cuDNN, TF32), and locking environment variables (PYTHONHASHSEED, CUBLAS_WORKSPACE_CONFIG).
@@ -51,11 +51,13 @@ ________________________________________________________________________________
    sets n_classes accordingly (in this case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
    ensure a reliable estimate of generalization.
-4. CNN use two layers, Conv Block 1:(1, 50, 50) - (16, 25, 25)，
-                       Conv Block 2:(16, 25, 25) - (32, 12, 12)，
+4. CNN use two layers\
+   Conv Block 1:(1, 50, 50) - (16, 25, 25)\
+   Conv Block 2:(16, 25, 25) - (32, 12, 12)\
+   \
    then flatten the 32x12x12 = 4608 to 128 dimensions (hidden fully-connected layer similar to latent space of
    VAE but does not have the ability to generate and interpolate) then classify the group of patches.
-5. After training with early stopping on the validation set, we evaluate final performance on the held-out test
+6. After training with early stopping on the validation set, we evaluate final performance on the held-out test
    set and report test accuracy.
 
 Output:
@@ -89,13 +91,14 @@ accuracy is also weaker than VAE but CNN is more lightweight.
 
 ____________________________________________________________________________________________________________
 ## Code name: v5_VAE_model.py
-1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
+1. The VAE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
-3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)，
-                Conv2d 1: (64, 25, 25) - (128, 12, 12)，
-                Conv2d 2: (128, 12, 12) - (256, 6, 6)，
+3. Three layers\
+   Conv2d 0: (1, 50, 50) - (64, 25, 25)\
+   Conv2d 1: (64, 25, 25) - (128, 12, 12)\
+   Conv2d 2: (128, 12, 12) - (256, 6, 6)\
    Then flatten 256x6x6 = 9216 to 128 latent dimensions.
-4. The classification head (self.classifier) takes μ as input and outputs three logits; these logits are passed
+5. The classification head (self.classifier) takes μ as input and outputs three logits; these logits are passed
    through a softmax to produce the probabilities for groups 0, 1, and 2, and the index with the highest
    probability is chosen as the final predicted class.
 
