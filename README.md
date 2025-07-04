@@ -139,7 +139,7 @@ Output:
   Figure This is reconstruction demonstration
 Average MSE: 0.001099\
 Average PSNR: 31.71 dB\
-Average SSIM: 0.7979\
+Average SSIM: 0.7979
 
 ____________________________________________________________________________________________________________
 
