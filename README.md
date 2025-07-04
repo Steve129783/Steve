@@ -1,16 +1,30 @@
-### Supervised Learning models: 1. CNN, 2. CVAE
+### Supervised Learning models: 
+1. CNN, 2. VAE
+This training pipeline ensures strict reproducibility of the model training process on identical hardware and
+code versions by globally fixing random seeds (Python, NumPy, PyTorch, CUDA), disabling nondeterministic
+algorithms (cuDNN, TF32), and locking environment variables (PYTHONHASHSEED, CUBLAS_WORKSPACE_CONFIG).
 
 ### What we input:
 1. Three datasets, 0: "correct", 1: "high", 2: "low"
+   
+group 0 corresponding to label：{'correct'}\
+group 1 corresponding to labe：{'high'}\
+group 2 corresponding to labe：{'low'}
+
 These datasets includs 50x50 patches from components with different print energy.
 ![image](https://github.com/user-attachments/assets/25ca3d79-7ec1-415a-9f78-1aaa46326e8f)
 
 ### Current objectives:
-1. Check CNN and CVAE latent space 
-2. Optimise the hyperparameters
+1. Check CNN and VAE latent space 
+2. Optimise the hyperparameters (1. increase the reconstruction performance，2. latent space separability)
 
 ### Tasks
 1. Use high defect sensitivity channels to classify the patches.
+
+### Mistake
+1. In the meeting 3rd Jul, I said my model is 'CVAE', that is wrong. That model is a ‘joint VAE–classifier model’.
+   The VAE component is trained in an unsupervised manner on the unlabeled data, whereas the classification head
+   is supervised with labeled examples to enforce class-specific structure in the latent space.
 ____________________________________________________________________________________________________________
 ## Code name: 0_image_save.py
 1. Read .tif files and separate them to different folders
@@ -34,7 +48,7 @@ Output:
 ____________________________________________________________________________________________________________
 ## Code name: c2_CNN_model.py
 1. The training script reads group_ids from the data_cache.pt file, counts the unique values, and automatically
-   sets n_classes accordingly (in your case, 3 classes).
+   sets n_classes accordingly (in this case, 3 classes).
 3. We split the dataset with ratios 70% train, 15% validation, and 15% test to help prevent overfitting and
    ensure a reliable estimate of generalization.
 4. CNN use two layers, Conv Block 1:(1, 50, 50) - (16, 25, 25)，
@@ -45,7 +59,7 @@ ________________________________________________________________________________
    set and report test accuracy.
 
 Output:
-1. Test Accuracy: 0.9654
+1. Test Accuracy: 0.9638
 2. best_model.pth
 ____________________________________________________________________________________________________________
 ## Code name: 3_c_vis.py
@@ -68,13 +82,13 @@ ________________________________________________________________________________
    layer and projecting it to 2D with PCA.
 
 Output：
-1. ![image](https://github.com/user-attachments/assets/97be60dc-b880-45b1-8125-b78ecc43d7a3)
+1. ![image](https://github.com/user-attachments/assets/6257ddf4-4c45-4673-b882-1621f88bb998)
 
-This figure shows that the expressive power of the latent space of CNN is weaker than the CVAE, and the classification
-accuracy is also weaker than CVAE.
+This figure shows that the expressive power of the latent space of CNN is weaker than the VAE, and the classification
+accuracy is also weaker than VAE but CNN is more lightweight.
 
 ____________________________________________________________________________________________________________
-## Code name: v5_CVAE_model.py
+## Code name: v5_VAE_model.py
 1. The CAVE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
 3. Three layers Conv2d 0: (1, 50, 50) - (64, 25, 25)，
@@ -90,7 +104,7 @@ Output:
     Top 5 KL dims (dim, kl): [(55, 0.9330708384513855), (5, 0.7913203835487366), (6, 0.009043470025062561), (118, 0.008738156408071518), 
 (93, 0.008143114857375622)]
 Early stopping triggered at epoch 21.
-Test Acc=0.9821 | Test MSE=0.009161
+Test Acc=0.9819 | Test MSE=0.000848
 
 model has better classification performance than CNN.
 
@@ -101,14 +115,21 @@ ________________________________________________________________________________
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
 Output:
-1. ![image](https://github.com/user-attachments/assets/99d13631-205c-42cc-bd79-62061bcf6e0e)
-Figure 1
+1. ![image](https://github.com/user-attachments/assets/fdb0a553-ed99-4742-9c89-a3e1256650d0)
+____________________________________________________________________________________________________________
+## Code name: 7_v_layer_vis.py
+1. use hook to visualize a defined layer's channels to a sample patch.
+   
+Output:
+1. Channel image, patch image and thermal-diagram
+   ![image](https://github.com/user-attachments/assets/16dca1d8-3e0e-45c7-b4bd-66ca75e8d6ea)
+   Figure layer(64, 25, 25)
+____________________________________________________________________________________________________________
+## Code name: 8_recon_val.py
+1. Test the reconstruction performance of VAE model
 
-From this image, the model clustering function is influenced by the 'edge' and 'corner' features which are caused 
-by the padding, if we only cluster patches depending on the featuers from defects, this problem can be avoided.
-
-3. ![image](https://github.com/user-attachments/assets/2c76df61-0400-4ac9-8a5a-4079e032d6d8)
-Figure 2 Zoom in on the middle section
+Output:
+1. 
 ____________________________________________________________________________________________________________
 ## Code name: Additional functions (not been implemented)
 1. Add more datasets
