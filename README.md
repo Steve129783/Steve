@@ -67,13 +67,13 @@ ________________________________________________________________________________
 
 Output:
 1. The encoder layers
-![image](https://github.com/user-attachments/assets/2973975c-fb34-4935-8877-cb593daca143)
+![image](https://github.com/user-attachments/assets/799d2bbb-46b1-47cb-b209-70aad1430531)
 
 Figure layer 0
 
 From this figure, some channels are high sensitivity to the defect pixels.
 
-![image](https://github.com/user-attachments/assets/ee1b1f76-281d-4de0-b4c4-bda6ca2ef20c)
+![image](https://github.com/user-attachments/assets/e7a4e565-918d-4ff0-9dc9-46f16eec00b9)
 
 Figure layer 1
 ____________________________________________________________________________________________________________
@@ -115,37 +115,30 @@ ________________________________________________________________________________
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
 Output:
-1. ![image](https://github.com/user-attachments/assets/fdb0a553-ed99-4742-9c89-a3e1256650d0)
+1. ![image](https://github.com/user-attachments/assets/aa32f54d-b02e-4e4b-aad5-feecb44cc5bf)
+
+
+![image](https://github.com/user-attachments/assets/365e91e0-b771-4f55-b433-3697cffd0b3a)
 ____________________________________________________________________________________________________________
 ## Code name: 7_v_layer_vis.py
 1. use hook to visualize a defined layer's channels to a sample patch.
    
 Output:
 1. Channel image, patch image and thermal-diagram
-   ![image](https://github.com/user-attachments/assets/16dca1d8-3e0e-45c7-b4bd-66ca75e8d6ea)
+   ![image](https://github.com/user-attachments/assets/634930ae-662d-48f2-8eba-39d55513644f)
    Figure layer(64, 25, 25)
 ____________________________________________________________________________________________________________
 ## Code name: 8_recon_val.py
 1. Test the reconstruction performance of VAE model
 
 Output:
-1. 
+1. ![image](https://github.com/user-attachments/assets/b3955bc9-df45-42df-8bc8-48c9f1b2a414)
+  Figure This is reconstruction demonstration
+Average MSE: 0.001099\
+Average PSNR: 31.71 dB\
+Average SSIM: 0.7979\
+
 ____________________________________________________________________________________________________________
-## Code name: Additional functions (not been implemented)
-1. Add more datasets
-2. Limit the model extracts the feature map only depends on the defect features.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
