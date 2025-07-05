@@ -133,11 +133,11 @@ ________________________________________________________________________________
 1. Test the reconstruction performance of VAE model
 
 Output:
-1. ![image](https://github.com/user-attachments/assets/b3955bc9-df45-42df-8bc8-48c9f1b2a414)
+1. ![image](https://github.com/user-attachments/assets/530117e9-ed4f-42c8-a70f-7828be51f020)
   Figure This is reconstruction demonstration
-Average MSE: 0.001099\
-Average PSNR: 31.71 dB\
-Average SSIM: 0.7979
+Average MSE: 0.000025\
+Average PSNR: 46.37 dB\
+Average SSIM: 0.9881
 
 ____________________________________________________________________________________________________________
 
