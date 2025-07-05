@@ -126,7 +126,7 @@ ________________________________________________________________________________
    
 Output:
 1. Channel image, patch image and thermal-diagram
-   ![image](https://github.com/user-attachments/assets/634930ae-662d-48f2-8eba-39d55513644f)
+   ![image](https://github.com/user-attachments/assets/1eda164d-dbe5-4432-8c6a-5a3094df1cd1)
    Figure layer(64, 25, 25)
 ____________________________________________________________________________________________________________
 ## Code name: 8_recon_val.py
