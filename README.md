@@ -103,11 +103,10 @@ ________________________________________________________________________________
    probability is chosen as the final predicted class.
 
 Output: 
-1. Epoch 21/50 | Train Acc=0.9954 | Val Acc=0.9802 | Val MSE=0.009520 | Val KL=2.2877
-    Top 5 KL dims (dim, kl): [(55, 0.9330708384513855), (5, 0.7913203835487366), (6, 0.009043470025062561), (118, 0.008738156408071518), 
-(93, 0.008143114857375622)]
-Early stopping triggered at epoch 21.
-Test Acc=0.9819 | Test MSE=0.000848
+1. Epoch 12/100 | Train Acc=0.9842 | Val Acc=0.9800 | Val MSE=0.000031 | Val KL=0.7059
+No improvement for 2 epoch(s)
+Early stopping at epoch 12
+Test Acc=0.9805 | Test MSE=0.000026
 
 model has better classification performance than CNN.
 
@@ -122,6 +121,8 @@ Output:
 
 
 ![image](https://github.com/user-attachments/assets/365e91e0-b771-4f55-b433-3697cffd0b3a)
+
+From the latent space image, the patches which have no padding features are clusters 
 ____________________________________________________________________________________________________________
 ## Code name: 7_v_layer_vis.py
 1. use hook to visualize a defined layer's channels to a sample patch.
