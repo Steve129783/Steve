@@ -117,12 +117,9 @@ ________________________________________________________________________________
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
 Output:
-1. ![image](https://github.com/user-attachments/assets/aa32f54d-b02e-4e4b-aad5-feecb44cc5bf)
+1. ![image](https://github.com/user-attachments/assets/aabf871d-17df-4b1e-96a0-b717e2fca7c6)
+![image](https://github.com/user-attachments/assets/880e35ff-6250-4f81-9f97-0415b00a0e0e)
 
-
-![image](https://github.com/user-attachments/assets/365e91e0-b771-4f55-b433-3697cffd0b3a)
-
-From the latent space image, the patches which have no padding features are clusters 
 ____________________________________________________________________________________________________________
 ## Code name: 7_v_layer_vis.py
 1. use hook to visualize a defined layer's channels to a sample patch.
