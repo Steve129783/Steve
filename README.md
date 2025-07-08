@@ -34,13 +34,12 @@ These datasets includs 50x50 patches from components with different print energy
 ____________________________________________________________________________________________________________
 ## Code name: 0_image_save.py
 1. Read .tif files and separate them to different folders
-2. output padded full images (200x200) and patches (50x50).
+2. output padded full images (original size) and patches (50x50).
 
 Output: 
-1. ![352_centered_200x200](https://github.com/user-attachments/assets/37ae058c-41c8-4413-9809-4c5417b8c795)
+1. ![000_cropped_150x150](https://github.com/user-attachments/assets/049e3790-50f6-4abd-85e3-396bfdd675c6)
 
-2. ![000_x50_y50](https://github.com/user-attachments/assets/faa78a56-f36e-4a4d-8ba9-bdbf1f29ee84)
-
+2. ![000_x0_y50](https://github.com/user-attachments/assets/1f4af70b-a253-415a-961e-c6e0c3681fcf)
 ____________________________________________________________________________________________________________
 ## Code name: 1_Pack.py
 1. Read patches from folders and label them by their folders’ name
@@ -49,8 +48,6 @@ ________________________________________________________________________________
 Output:
 1. E:\Project_CNN\2_Pack\data_cache.pt
 ![image](https://github.com/user-attachments/assets/f2712475-3c81-4388-91e9-9292b0b3590e)
-
-
 ____________________________________________________________________________________________________________
 ## Code name: c2_CNN_model.py
 1. The training script reads group_ids from the data_cache.pt file, counts the unique values, and automatically
