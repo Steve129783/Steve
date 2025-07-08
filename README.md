@@ -24,7 +24,7 @@ These datasets includs 50x50 patches from components with different print energy
 2. check CNN hidden space and VAE latent space
 
 ### Tasks
-1. Use high defect sensitivity channels to classify the patches.
+1. Use weight difference to regulate the information that the CNN model input to hidden space.
 
 ### Mistake
 1. In the meeting 3rd Jul, I said my model is 'CVAE', that is wrong. That model is a ‘joint VAE–classifier model’.
@@ -64,7 +64,9 @@ ________________________________________________________________________________
    set and report test accuracy.
 
 Output:
-1. Test Accuracy: 0.9638
+1. Epoch 14  Val Loss=0.4581  Val Acc=0.8423
+Early stopping
+Test Accuracy: 0.9485
 2. best_model.pth
 ____________________________________________________________________________________________________________
 ## Code name: 3_c_vis.py
@@ -75,21 +77,23 @@ Output:
 ![image](https://github.com/user-attachments/assets/3e7a18b2-e1d0-40cc-9c9d-c5a11015dee7)
 Figure layer 0
 
-From this figure, some channels are high sensitivity to the defect pixels.
+From Figure 1, channels [11, 13] are high sensitivity to the defect pixels.
 
-![image](https://github.com/user-attachments/assets/898e6d9e-388c-481c-b8be-3645282e5a0f)
+![image](https://github.com/user-attachments/assets/c3c5ad07-c95c-41f9-926b-0aecdfa8f1cf)
 Figure layer 1
+
+From Figrue 2, channels [11, 13] are high sensitivity to the defect pixels.
 ____________________________________________________________________________________________________________
 ## Code name: 4_c_hidden_vis，py
 1. We visualize samples in the CNN hidden feature space by extracting the 128-dimensional vector from the penultimate
    layer and projecting it to 2D with PCA.
 
 Output：
-1. ![image](https://github.com/user-attachments/assets/6257ddf4-4c45-4673-b882-1621f88bb998)
+1. ![image](https://github.com/user-attachments/assets/c1fb4590-4c2a-4e9e-b31f-daf0f2c3972c)
+2. ![image](https://github.com/user-attachments/assets/4f12a95f-c531-4535-83d9-52b622a1bebf)
 
-This figure shows that the expressive power of the latent space of CNN is weaker than the VAE, and the classification
-accuracy is also weaker than VAE but CNN is more lightweight.
-
+This figure shows the CNN model can classify the patches to different clusters in a good accuracy and PCA dimensional-reduction
+make the hidden space changing linearly, y-axis shows the size of defects and x-axis shows the texture and number of components.
 ____________________________________________________________________________________________________________
 ## Code name: v5_VAE_model.py
 1. The VAE training script reads information from the data_cache.pt file, and train with the labeled datasets.
@@ -104,30 +108,29 @@ ________________________________________________________________________________
    probability is chosen as the final predicted class.
 
 Output: 
-1. Epoch 12/100 | Train Acc=0.9842 | Val Acc=0.9800 | Val MSE=0.000031 | Val KL=0.7059
+1. Epoch 18/100 | Train Acc=0.9180 | Val Acc=0.8119 | Val MSE=0.000068 | Val KL=0.0303
 No improvement for 2 epoch(s)
-Early stopping at epoch 12
-Test Acc=0.9805 | Test MSE=0.000026
+Early stopping at epoch 18
+Test Acc=0.9639 | Test MSE=0.000021
 
 model has better classification performance than CNN.
-
-2. save best weight best_model.pth
 ____________________________________________________________________________________________________________
 ## Code name: 6_v_latent_cluster.py
 1. input data_cache.py and import the best_model.pth to extract only μ (ignore log variance logσ^2).
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
 Output:
-1. ![image](https://github.com/user-attachments/assets/aabf871d-17df-4b1e-96a0-b717e2fca7c6)
-![image](https://github.com/user-attachments/assets/880e35ff-6250-4f81-9f97-0415b00a0e0e)
-
+1. ![image](https://github.com/user-attachments/assets/6bbee6d8-a835-4267-9c87-7e87f4c19349)
+Analysation: The latent space map shows that these three clusters, the 'correct' patch is separated by 'high'
+and 'low', the patch which is closer to the centre of the 'low' cluster, likely to has more defects or more
+roughness texture, and closer to 'high' centre will be more smooth.
 ____________________________________________________________________________________________________________
 ## Code name: 7_v_layer_vis.py
 1. use hook to visualize a defined layer's channels to a sample patch.
    
 Output:
 1. Channel image, patch image and thermal-diagram
-   ![image](https://github.com/user-attachments/assets/1eda164d-dbe5-4432-8c6a-5a3094df1cd1)
+   ![image](https://github.com/user-attachments/assets/19c7547d-e224-47a7-8c93-74a5024655e8)
    Figure layer(64, 25, 25)
 ____________________________________________________________________________________________________________
 ## Code name: 8_recon_val.py
