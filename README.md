@@ -72,14 +72,12 @@ ________________________________________________________________________________
 
 Output:
 1. The encoder layers
-![image](https://github.com/user-attachments/assets/799d2bbb-46b1-47cb-b209-70aad1430531)
-
+![image](https://github.com/user-attachments/assets/3e7a18b2-e1d0-40cc-9c9d-c5a11015dee7)
 Figure layer 0
 
 From this figure, some channels are high sensitivity to the defect pixels.
 
-![image](https://github.com/user-attachments/assets/e7a4e565-918d-4ff0-9dc9-46f16eec00b9)
-
+![image](https://github.com/user-attachments/assets/898e6d9e-388c-481c-b8be-3645282e5a0f)
 Figure layer 1
 ____________________________________________________________________________________________________________
 ## Code name: 4_c_hidden_vis，py
