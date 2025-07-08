@@ -1,3 +1,8 @@
+### Optimized points：
+1. VAE training program used wrong 'kl' formula.
+2. Pack program remove the 'padding' method to reduce the unrelated information
+3. Add CNN channel weight to research the relationship between layers
+
 ### Supervised Learning models: 
 1. CNN, 2. VAE\
 This training pipeline ensures strict reproducibility of the model training process on identical hardware and
@@ -12,11 +17,11 @@ group 1 corresponding to labe：{'high'}\
 group 2 corresponding to labe：{'low'}
 
 These datasets includs 50x50 patches from components with different print energy.
-![image](https://github.com/user-attachments/assets/25ca3d79-7ec1-415a-9f78-1aaa46326e8f)
+![000_x0_y50](https://github.com/user-attachments/assets/1f4af70b-a253-415a-961e-c6e0c3681fcf)
 
 ### Current objectives:
-1. Check CNN and VAE latent space 
-2. Optimise the hyperparameters (1. increase the reconstruction performance，2. latent space separability)
+1. Research the relationship between layers
+2. check CNN hidden space and VAE latent space
 
 ### Tasks
 1. Use high defect sensitivity channels to classify the patches.
@@ -25,6 +30,7 @@ These datasets includs 50x50 patches from components with different print energy
 1. In the meeting 3rd Jul, I said my model is 'CVAE', that is wrong. That model is a ‘joint VAE–classifier model’.
    The VAE component is trained in an unsupervised manner on the unlabeled data, whereas the classification head
    is supervised with labeled examples to enforce class-specific structure in the latent space.
+2. 'kl' formula in VAE training program is wrong.
 ____________________________________________________________________________________________________________
 ## Code name: 0_image_save.py
 1. Read .tif files and separate them to different folders
