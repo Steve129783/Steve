@@ -142,8 +142,39 @@ Output:
 Average MSE: 0.000025\
 Average PSNR: 46.37 dB\
 Average SSIM: 0.9881
-
 ____________________________________________________________________________________________________________
+## Code name: c9_channel_weight.py
+1. This code gives higher defect sensitivity channels larger weight and gives others a short weight to train
+   the mdoel.
+
+Output predict: the channels in layer 2 will store more defect informations and the classifier would like to 
+use defect features to classify the patches.
+
+Output：
+1. I optimized the code that we discussed in meeting, it shows a better defect sensitivity.
+   Epoch 13  Val Loss=0.4907  Val Acc=0.7996
+Early stopping
+Test Acc: 0.8378
+This shows because of the information decreasing, the classifier cannot contain the high classification accuracy.
+
+2. Compare with the c2 (full channels), the new hidden space c11 shows that the defects linearly growth along the
+   x-axis with the greater independence.
+   ![image](https://github.com/user-attachments/assets/823eab5d-4cd0-46eb-8119-d4f8deb4f863)
+This figure shows the boundary of clusters are not as clear as c2 but better in interpretability.
+
+3. This image shows the change in layer 0 and 1.
+   ![image](https://github.com/user-attachments/assets/e31c9c40-c16f-4374-8cb0-9d879857c99f)
+Layer 0 only remain 2 channels
+
+   ![image](https://github.com/user-attachments/assets/de25ead3-77c4-48d1-9d80-987b425f873c)
+____________________________________________________________________________________________________________
+## Next step:
+1. based on current CNN code, give small weight to other channels instead of 0 weight.
+Predict output：1. higher accuracy，2. more clear cluster boundary in hidden space
+
+## My question:
+
+
 
 
 
