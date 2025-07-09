@@ -10,7 +10,7 @@ the target cluster to know whether the current parameter (print temp, print spee
 compare with his predict.
 \
 ## Please check 'c5_channel_weight.py' part.
-\
+
 ### Supervised Learning models: 
 1. CNN, 2. VAE\
 This training pipeline ensures strict reproducibility of the model training process on identical hardware and
