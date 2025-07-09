@@ -3,6 +3,7 @@
 2. Pack program remove the 'padding' method to reduce the unrelated information
 3. Add CNN channel weight to research the relationship between layers
 4. The hidden space visualization program is repaired
+Please check ## Code name: c5_channel_weight.py
    
 ### Supervised Learning models: 
 1. CNN, 2. VAE\
@@ -96,7 +97,48 @@ Output：
 This figure shows the CNN model can classify the patches to different clusters in a good accuracy and PCA dimensional-reduction
 make the hidden space changing linearly, y-axis shows the size of defects and x-axis shows the texture and number of components.
 ____________________________________________________________________________________________________________
-## Code name: v5_VAE_model.py
+## Code name: c5_channel_weight.py
+1. This code gives higher defect sensitivity channels larger weight and gives others a short weight to train
+   the mdoel.
+
+Output predict: the channels in layer 2 will store more defect informations and the classifier would like to 
+use defect features to classify the patches.
+
+Output 1：
+1. I optimized the code that we discussed in meeting, it shows a better defect sensitivity.
+   Weight：0\
+   Epoch 13  Val Loss=0.4907  Val Acc=0.7996\
+Early stopping\
+Test Acc: 0.8378\
+This shows because of the information decreasing, the classifier cannot contain the high classification accuracy.
+
+3. Compare with the c2 (full channels), the new hidden space c11 shows that the defects linearly growth along the
+   x-axis with the greater independence.
+   ![image](https://github.com/user-attachments/assets/823eab5d-4cd0-46eb-8119-d4f8deb4f863)
+This figure shows the boundary of clusters are not as clear as c2 but better in interpretability.
+
+4. This image shows the change in layer 0 and 1.
+   ![image](https://github.com/user-attachments/assets/e31c9c40-c16f-4374-8cb0-9d879857c99f)
+Layer 0 only remain 2 channels
+
+   ![image](https://github.com/user-attachments/assets/de25ead3-77c4-48d1-9d80-987b425f873c)
+
+Output 2:
+1. Weight：0.1\
+   Epoch 14  Val Loss=0.1407  Val Acc=0.9433\
+Early stopping\
+Test Acc: 0.9513\
+Better accuracy
+  ![image](https://github.com/user-attachments/assets/8d3c51cb-9de5-4419-acb7-dd2948d011aa)
+  ![image](https://github.com/user-attachments/assets/f5ff5f32-7bc1-40d5-9896-91cd80ec29e0)
+  ![image](https://github.com/user-attachments/assets/124cb62b-5e00-411d-821d-3b4c17a778c1)
+
+## Conclusion:
+Through contrast the hidden space from two weight (0 and 0.1), this 'post-process' method specifically designed 
+to block useless information.
+____________________________________________________________________________________________________________
+____________________________________________________________________________________________________________
+## Code name: v1_VAE_model.py
 1. The VAE training script reads information from the data_cache.pt file, and train with the labeled datasets.
 2. model automatically separate the dataset to 'train' (0.7), 'val' (0.15) and 'test' (0.15).
 3. Three layers\
@@ -116,7 +158,7 @@ Test Acc=0.9639 | Test MSE=0.000021
 
 model has better classification performance than CNN.
 ____________________________________________________________________________________________________________
-## Code name: 6_v_latent_cluster.py
+## Code name: 2_v_latent_cluster.py
 1. input data_cache.py and import the best_model.pth to extract only μ (ignore log variance logσ^2).
 2. Use PCA to reduce the dimension of latent space, then visualize the map.
 
@@ -126,7 +168,7 @@ Analysation: The latent space map shows that these three clusters, the 'correct'
 and 'low', the patch which is closer to the centre of the 'low' cluster, likely to has more defects or more
 roughness texture, and closer to 'high' centre will be more smooth.
 ____________________________________________________________________________________________________________
-## Code name: 7_v_layer_vis.py
+## Code name: 3_v_layer_vis.py
 1. use hook to visualize a defined layer's channels to a sample patch.
    
 Output:
@@ -134,7 +176,7 @@ Output:
    ![image](https://github.com/user-attachments/assets/19c7547d-e224-47a7-8c93-74a5024655e8)
    Figure layer(64, 25, 25)
 ____________________________________________________________________________________________________________
-## Code name: 8_recon_val.py
+## Code name: 4_recon_val.py
 1. Test the reconstruction performance of VAE model
 
 Output:
@@ -143,31 +185,6 @@ Output:
 Average MSE: 0.000025\
 Average PSNR: 46.37 dB\
 Average SSIM: 0.9881
-____________________________________________________________________________________________________________
-## Code name: c9_channel_weight.py
-1. This code gives higher defect sensitivity channels larger weight and gives others a short weight to train
-   the mdoel.
-
-Output predict: the channels in layer 2 will store more defect informations and the classifier would like to 
-use defect features to classify the patches.
-
-Output：
-1. I optimized the code that we discussed in meeting, it shows a better defect sensitivity.
-   Epoch 13  Val Loss=0.4907  Val Acc=0.7996
-Early stopping
-Test Acc: 0.8378
-This shows because of the information decreasing, the classifier cannot contain the high classification accuracy.
-
-2. Compare with the c2 (full channels), the new hidden space c11 shows that the defects linearly growth along the
-   x-axis with the greater independence.
-   ![image](https://github.com/user-attachments/assets/823eab5d-4cd0-46eb-8119-d4f8deb4f863)
-This figure shows the boundary of clusters are not as clear as c2 but better in interpretability.
-
-3. This image shows the change in layer 0 and 1.
-   ![image](https://github.com/user-attachments/assets/e31c9c40-c16f-4374-8cb0-9d879857c99f)
-Layer 0 only remain 2 channels
-
-   ![image](https://github.com/user-attachments/assets/de25ead3-77c4-48d1-9d80-987b425f873c)
 ____________________________________________________________________________________________________________
 ## Next step:
 1. based on current CNN code, give small weight to other channels instead of 0 weight.
