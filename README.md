@@ -3,7 +3,7 @@
 2. Pack program remove the 'padding' method to reduce the unrelated information
 3. Add CNN channel weight to research the relationship between layers
 4. The hidden space visualization program is repaired
-Please check ## Code name: c5_channel_weight.py
+### Please check Code name: c5_channel_weight.py
    
 ### Supervised Learning models: 
 1. CNN, 2. VAE\
