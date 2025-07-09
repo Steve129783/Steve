@@ -2,7 +2,8 @@
 1. VAE training program used wrong 'kl' formula.
 2. Pack program remove the 'padding' method to reduce the unrelated information
 3. Add CNN channel weight to research the relationship between layers
-
+4. The hidden space visualization program is repaired
+   
 ### Supervised Learning models: 
 1. CNN, 2. VAE\
 This training pipeline ensures strict reproducibility of the model training process on identical hardware and
