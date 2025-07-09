@@ -3,6 +3,12 @@
 2. Pack program remove the 'padding' method to reduce the unrelated information
 3. Add CNN channel weight to research the relationship between layers
 4. The hidden space visualization program is repaired
+
+### Prediction to the final state
+The patches from different components can be clustered in the hidden space, operator can check the location of
+the target cluster to know whether the current parameter (print temp, print speed, angle et al.) is appropriate 
+compare with his predict.
+
 ## Please check 'c5_channel_weight.py' part.
    
 ### Supervised Learning models: 
