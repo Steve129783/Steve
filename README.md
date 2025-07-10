@@ -180,7 +180,9 @@ ________________________________________________________________________________
 Output:
 1. Channel image, patch image and thermal-diagram
    ![image](https://github.com/user-attachments/assets/19c7547d-e224-47a7-8c93-74a5024655e8)
-   Figure layer(64, 25, 25)
+   Figure layer 1 （64, 25, 25)\
+   <img width="1978" height="1240" alt="image" src="https://github.com/user-attachments/assets/4714e7e2-82f1-4e6f-9601-b66e1816c06f" />
+   Figure layer 2 （64, 25, 25)
 ____________________________________________________________________________________________________________
 ## Code name: 4_recon_val.py
 1. Test the reconstruction performance of VAE model
@@ -191,6 +193,21 @@ Output:
 Average MSE: 0.000025\
 Average PSNR: 46.37 dB\
 Average SSIM: 0.9881
+____________________________________________________________________________________________________________
+## Code name: 5_VAE_channel.py
+1. 
+
+Output:
+1. Epoch 26/100  Train Acc=0.9948 | Val Acc=0.9329  Val MSE=0.000184  Val KL=3.4598
+Early stopping
+Test Acc=0.9460  Test MSE=0.000184
+
+2. <img width="2439" height="1233" alt="image" src="https://github.com/user-attachments/assets/7a70c4c1-8502-480d-96ba-c7d0ab805357" />
+   <img width="2430" height="1211" alt="image" src="https://github.com/user-attachments/assets/e9019ed6-29b2-44c5-98c9-cbe2d3301cd2" />
+
+3. <img width="1553" height="1205" alt="image" src="https://github.com/user-attachments/assets/47df365a-5f59-47d0-b7f9-ef13355e78c3" />
+   <img width="1828" height="1206" alt="image" src="https://github.com/user-attachments/assets/2e70fcc2-a6c5-4197-8662-ca3c876c305a" />
+
 ____________________________________________________________________________________________________________
 ## Next step:
 1. based on current CNN code, give small weight to other channels instead of 0 weight.
