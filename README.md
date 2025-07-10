@@ -195,23 +195,25 @@ Average PSNR: 46.37 dB\
 Average SSIM: 0.9881
 ____________________________________________________________________________________________________________
 ## Code name: 5_VAE_channel.py
-1. 
+1. Use the same method to limit the model extracting the defect features in layer 1 while reset the layer 2 and 3
+to retrain them.
 
 Output:
-1. Epoch 26/100  Train Acc=0.9948 | Val Acc=0.9329  Val MSE=0.000184  Val KL=3.4598
-Early stopping
+1. Epoch 26/100  Train Acc=0.9948 | Val Acc=0.9329  Val MSE=0.000184  Val KL=3.4598\
+Early stopping\
 Test Acc=0.9460  Test MSE=0.000184
 
 2. <img width="2439" height="1233" alt="image" src="https://github.com/user-attachments/assets/7a70c4c1-8502-480d-96ba-c7d0ab805357" />
    <img width="2430" height="1211" alt="image" src="https://github.com/user-attachments/assets/e9019ed6-29b2-44c5-98c9-cbe2d3301cd2" />
+   
+
 
 3. <img width="1553" height="1205" alt="image" src="https://github.com/user-attachments/assets/47df365a-5f59-47d0-b7f9-ef13355e78c3" />
    <img width="1828" height="1206" alt="image" src="https://github.com/user-attachments/assets/2e70fcc2-a6c5-4197-8662-ca3c876c305a" />
 
 ____________________________________________________________________________________________________________
 ## Next step:
-1. based on current CNN code, give small weight to other channels instead of 0 weight.
-Predict output：1. higher accuracy，2. more clear cluster boundary in hidden space
+1. Pack the patches from other components to see the cluster ability of the model.
 
 ## My question:
 
