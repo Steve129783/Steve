@@ -12,7 +12,7 @@ Before Align\
 \
 After Align\
 <img width="400" height="400" alt="crop_Componenets_1 transformed059" src="https://github.com/user-attachments/assets/6079647f-f32e-42fa-b1a9-302a9b2dc6eb" />
-\
+
 ### Optimized points：
 1. VAE training program used wrong 'kl' formula.
 2. Pack program remove the 'padding' method to reduce the unrelated information
