@@ -4,6 +4,7 @@
 3. Use VAE + classify head to cluster them (4 same components as CNN)
 4. Contrast the result and combine them together to prove the effectiveness of this method to assistant people
    tune the printer's parameters.
+<img width="650" height="255" alt="image" src="https://github.com/user-attachments/assets/1b8d630a-1849-4747-adfc-43f1bbfdb220" />
 
 
 ### Optimized points：
