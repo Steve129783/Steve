@@ -1,3 +1,11 @@
+## Whole process
+1. Use Semantic Segmentation to align the main body in every dataset from Guan, then cut them to 50x50 patches
+2. Use CNN to cluster them (4 component per row or per column)
+3. Use VAE + classify head to cluster them (4 component per row or per column)
+4. Contrast the result and combine them together to prove the effectiveness of this method to assistant people
+   tune the printer's parameters.
+
+
 ### Optimized points：
 1. VAE training program used wrong 'kl' formula.
 2. Pack program remove the 'padding' method to reduce the unrelated information
