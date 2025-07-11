@@ -6,7 +6,13 @@
    tune the printer's parameters.
 <img width="650" height="255" alt="image" src="https://github.com/user-attachments/assets/1b8d630a-1849-4747-adfc-43f1bbfdb220" />
 
-
+Before Align\
+<img width="394" height="350" alt="image" src="https://github.com/user-attachments/assets/45159b79-a989-4224-8069-ca087ab69ad9" />
+\
+\
+After Align\
+<img width="400" height="400" alt="crop_Componenets_1 transformed059" src="https://github.com/user-attachments/assets/6079647f-f32e-42fa-b1a9-302a9b2dc6eb" />
+\
 ### Optimized points：
 1. VAE training program used wrong 'kl' formula.
 2. Pack program remove the 'padding' method to reduce the unrelated information
